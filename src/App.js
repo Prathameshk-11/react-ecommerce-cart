@@ -3,10 +3,10 @@ import ProductList from "./components/ProductList";
 import Cart from "./components/Cart";
 import products from "./data/products";
 
-// initial state
+
 const initialState = { items: {} };
 
-// reducer
+
 function cartReducer(state, action) {
   const items = { ...state.items };
   switch (action.type) {
@@ -45,7 +45,7 @@ export const CartContext = React.createContext();
 export default function App() {
   const [state, dispatch] = useReducer(cartReducer, initialState);
 
-  // load from localStorage once
+  
   useEffect(() => {
     const raw = localStorage.getItem("cart");
     if (raw) {
@@ -58,7 +58,7 @@ export default function App() {
     }
   }, []);
 
-  // persist on changes
+  
   useEffect(() => {
     localStorage.setItem("cart", JSON.stringify(state.items));
   }, [state.items]);
